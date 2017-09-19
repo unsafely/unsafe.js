@@ -1,0 +1,8 @@
+*.min.js
+*.packed.js
+.DS_Store
+node_modules
+package.json
+PATENT
+LICENSE
+humans.txt

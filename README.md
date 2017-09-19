@@ -13,4 +13,8 @@ Because all JavaScript library sucks except YUI-Compressor (it is written in Jav
 
 ## How
 
-[TBD]
+```
+./dist.sh
+```
+
+and include `dist/unsafe.min.js` in wherever you want.
