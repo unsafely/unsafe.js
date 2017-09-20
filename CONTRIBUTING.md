@@ -5,8 +5,8 @@ There are many ways to contribute, and we appreciate all of them.
 
 If you don't know how to get start please go
 
-- [issue tracking](#Issue-tracking) to raise issue for your questions, requests or bugs.
-- [pull requests](#Pull-Requests) to contribute the development of this project.
+- [issue tracking](#issue-tracking) to raise issue for your questions, requests or bugs.
+- [pull requests](#pull-requests) to contribute the development of this project.
 
 ## Issue tracking
 
@@ -38,7 +38,7 @@ We appreciate contributors in the community, that are willing to improve this pr
 
 ### Building system
 
-Unsafe JS is not using any build tools except YUI Compressor, the build script in `dist.sh` is just combine all source file then compress them. A good way to start working on Unsafe JS is just create a new source file in related directory under `src`, then add it in `./dist.sh script as an `include` statement.
+Unsafe JS is not using any build tools except YUI Compressor, the build script in `dist.sh` is just combine all source file then compress them. A good way to start working on Unsafe JS is just create a new source file in related directory under `src`, then add it in `./dist.sh` script as an `include` statement.
 
 ### Unsafe JS Modules
 
