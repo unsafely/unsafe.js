@@ -10,7 +10,7 @@ include() {
 > dist/unsafe.packed.js
 
 include unsafe.js
-include unsafe/loader.js
-include unsafe/test.js
+include core/loader.js
+include core/test.js
 
 java -jar lib/*.jar dist/unsafe.packed.js -o dist/unsafe.min.js

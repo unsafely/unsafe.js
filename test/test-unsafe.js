@@ -1,4 +1,4 @@
-unsafe.module("test-unsafe", ["test"], function (test) {
+unsafe.test("test-unsafe", ["test"], function (test) {
     test("hello world", function () {
         console.log("hello world");
     })
@@ -6,4 +6,4 @@ unsafe.module("test-unsafe", ["test"], function (test) {
     test("unsafe test", function () {
         console.log("unsafe test");
     })
-})
+});

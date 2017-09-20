@@ -1,9 +1,20 @@
 (function (unsafe) {
+
+    var testSuite = []
+    var mockFacotry = {}
+
+    unsafe.ext("test", function (unsafe) {
+        return function (module, deps, fn) {
+            unsafe.module(module, deps, fn);
+            testSuite.push(unsafe.instance(module));
+        };
+    });
+
     unsafe.module("test", function () {
-        var testSuite = [];
+        var testCases = [];
 
         var test = function (name, fn) {
-            testSuite.push({
+            testCases.push({
                 name: name,
                 run: function () {
                     fn.apply(null, fn);
@@ -13,11 +24,11 @@
 
         test.run = function (name) {
             if (name === undefined) {
-                testSuite.forEach(function (test) {
+                testCases.forEach(function (test) {
                     test.run();
                 });
             }
-            testSuite.filter(function (test) {
+            testCases.filter(function (test) {
                 return test.name.indexOf(name) > -1;
             }).forEach(function (test) {
                 test.run();
