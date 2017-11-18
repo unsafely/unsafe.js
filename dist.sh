@@ -12,5 +12,7 @@ include() {
 include unsafe.js
 include core/loader.js
 include core/test.js
+include browser/config.js
+include browser/template.js
 
 java -jar lib/*.jar dist/unsafe.packed.js -o dist/unsafe.min.js

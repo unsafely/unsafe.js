@@ -19,6 +19,9 @@
             }
             return module["instance"];
         };
+
+        unsafe.global = global;
+        
         unsafe.module = function (name, dependencies, fn) {
             if (arguments.length >= 2) {
                 if (fn === undefined) {
