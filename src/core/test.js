@@ -17,6 +17,7 @@
             testCases.push({
                 name: name,
                 run: function () {
+                    console.log("Running test [" + name + "]");
                     fn.apply(null, fn);
                 }
             });

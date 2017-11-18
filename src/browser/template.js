@@ -2,7 +2,6 @@
     unsafe.module("browser-template", ["browser-config"], function (config) {
         var browser = config.browser;
 
-        var source = "<hello><World name='earth'/></hello>";
         var parser = new browser.DOMParser();        
 
         var el = function (name, children) {
@@ -25,7 +24,7 @@
                 nodes.forEach(function (node) {
                     el.appendChild(translateNode(node,  environment));
                 });
-                return nodes.childNodes;
+                return el.childNodes;
             }
         };
 
@@ -37,7 +36,7 @@
                     node.getAttributeNames().forEach(function (name) {
                         attrs[name] = node.getAttribute(name);
                     });
-                    return ctor(attrs, translate(node.childNodes));
+                    return ctor(attrs, translate(node.childNodes, environment));
                 }
             }
             return node;
