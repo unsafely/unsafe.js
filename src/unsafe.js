@@ -15,7 +15,7 @@
             if (module["instance"] === undefined) {
                 module["instance"] = module.constructor.apply({}, module.dependencies.map((function (dependency) {
                     return instantiate(loader(dependency))
-                })))
+                })));
             }
             return module["instance"];
         };
@@ -34,18 +34,19 @@
             return loader(name);
         };
 
-        unsafe.instance = function (module) {
+        unsafe.load = function (module) {
             return instantiate(unsafe.module(module));
-        }
+        };
 
         unsafe.ext = function (name, fn) {
             unsafe[name] = fn.apply(null, [unsafe, unsafe[name]]);
-        }
+        };
 
         unsafe.resetLoader = function (loaderCreator) {
             loader = loaderCreator(loader);
         };
 
+        /* TODO: TBD, redesign fork process */
         unsafe.fork = function (fn) {
             var child = new Unsafe(global);
             var parent = this;
@@ -61,10 +62,10 @@
                     }
                     return modules[name];
                 }
-            })
+            });
 
             return fn.apply(parent, child);
-        }
+        };
     };
 
     var unsafe = new Unsafe(global);

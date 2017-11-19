@@ -12,6 +12,8 @@ include() {
 include unsafe.js
 include core/loader.js
 include core/test.js
+include core/assert.js
+include core/collection.js
 include browser/config.js
 include browser/template.js
 

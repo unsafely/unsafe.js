@@ -20,8 +20,7 @@ unsafe.test("test-browser-template",
             });
 
             childrefs.forEach(function (nav) {
-                var item = template.el("li");
-                item.appendChild(nav);
+                var item = template.el("li", nav);
                 el.appendChild(item);
             });
 

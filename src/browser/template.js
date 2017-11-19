@@ -2,7 +2,7 @@
     unsafe.module("browser-template", ["browser-config"], function (config) {
         var browser = config.browser;
 
-        var parser = new browser.DOMParser();        
+        var parser = new browser.DOMParser();
 
         var el = function (name, children) {
             var el = browser.document.createElement(name);
@@ -10,10 +10,14 @@
                 children.forEach(function (node, i) {
                     el.appendChild(node);
                 });
-            } else if (children !== undefined){
+            } else if (children !== undefined) {
                 el.appendChild(children);
             }
             return el;
+        };
+
+        el.text = function (text) {
+            return browser.document.createTextNode(text);
         }
 
         var translate = function (nodes, environment) {
