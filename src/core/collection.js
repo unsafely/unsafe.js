@@ -36,11 +36,10 @@
         };
 
         var sign = function (i) {
-            if (i >= 0) {
-                return 1;
-            } else {
+            if (i < 0) {
                 return -1;
             }
+            return 1;
         };
 
         var ItemListAdatper = function (list) {
@@ -55,9 +54,13 @@
         };
 
         var RangeAdapter = function (from, to, step) {
-            step = step || sign(to - from) ;
+            if (to === undefined) {
+                to = from;
+                from = 0;
+            }
+            step = step || sign(to - from);
             this.collection = this;
-            var size = to === undefined || to === Number.MAX_SAFE_INTEGER ?
+            var size = Number.isNaN(to)|| to === Number.MAX_SAFE_INTEGER ?
                 Number.POSITIVE_INFINITY : Math.floor((to - from) / step);
             var self = this;
             self.get = function (i) {

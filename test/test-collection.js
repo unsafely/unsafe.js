@@ -53,10 +53,11 @@ function (test, assert, _) {
     test("Range", function () {
         assert.eq(_.range(0, 5).size(), 5);
         assert.eq(_.range(0, 10, 2).size(), 5);
-        assert.eq(_.range(10).size(), Number.POSITIVE_INFINITY);
+        assert.eq(_.range(10).size(), 10);
+        assert.eq(_.range(10, NaN).size(), Number.POSITIVE_INFINITY);
 
         assert.eq(_.range(10).take(5).toArray().length, 5);
-        assert.eq(_.range(5, undefined, 10).get(10), 105);
+        assert.eq(_.range(5, NaN, 10).get(10), 105);
     });
 
     test("Object collection", function () {
