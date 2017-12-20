@@ -1,3 +1,4 @@
+# Collections
 
 Collection are one of the basic abstractions in UnsafeJS. Each collection
 type should met following requirements:

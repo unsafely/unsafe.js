@@ -1,5 +1,4 @@
-The Module System
-========
+# The Module System
 
 ## Structure
 
