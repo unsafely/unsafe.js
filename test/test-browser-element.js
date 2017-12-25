@@ -1,5 +1,5 @@
-unsafe.test("test-browser-template",
-    ["test", "browser-template", "browser-config"],
+unsafe.test("test-browser-element",
+    ["test", "browser-element", "browser-config"],
     function (test, template, config) {
         var browser = config.browser;
 

@@ -1,11 +1,13 @@
 (function (unsafe) {
-    unsafe.module("browser-template", ["browser-config"], function (config) {
+    unsafe.module("browser-element", ["browser-config", "fn"], function (config, $) {
         var browser = config.browser;
 
         var parser = new browser.DOMParser();
 
-        var el = function (name, children) {
-            var el = browser.document.createElement(name);
+        var tag = $.delegate(browser.document, "createElement");
+
+        var element = function (name, children) {
+            var el = tag(name);
             if (children instanceof NodeList) {
                 children.forEach(function (node, i) {
                     el.appendChild(node);
@@ -16,15 +18,14 @@
             return el;
         };
 
-        el.text = function (text) {
-            return browser.document.createTextNode(text);
-        }
+        element.text = $.delegate(browser.document, "createTextNode");
+        element.tag = tag;
 
         var translate = function (nodes, environment) {
             if (nodes.length == 1) {
                 return translateNode(nodes.item(0), environment);
             } else {
-                var el = browser.document.createElement("div");
+                var el = element.tag("div");
                 nodes.forEach(function (node) {
                     el.appendChild(translateNode(node,  environment));
                 });
@@ -55,7 +56,7 @@
 
         return {
             render: render,
-            el: el
+            el: element
         };
     });
 }(this.unsafe));
