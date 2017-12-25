@@ -9,6 +9,7 @@ die() {
 
 include() {
     [ -e src/$1 ] || die "Unknown module [$1]"
+    echo "/* Module $1 */" >> dist/unsafe.packed.js
     cat src/$1 >> dist/unsafe.packed.js
     echo >> dist/unsafe.packed.js
 }
