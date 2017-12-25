@@ -4,7 +4,7 @@ unsafe.test("test-browser-template",
         var browser = config.browser;
 
         var nav = function (attrs, childs) {
-            var el = template.el("a", browser.document.createTextNode(attrs["description"]));
+            var el = template.el("a", template.el.text(attrs["description"]));
             el.setAttribute("href", attrs["to"]);
 
             return el;
@@ -36,7 +36,7 @@ unsafe.test("test-browser-template",
             var nav = template
                 .render("<nav to='test' description='This is a test link'/>", env);
             
-            document.body.appendChild(nav);
+            browser.document.body.appendChild(nav);
         });
 
         test("should-render-recursively", function () {
@@ -46,6 +46,6 @@ unsafe.test("test-browser-template",
                 "<nav to='test' description='Third'/>" +
                 "</navtabs>", env);;
 
-            document.body.appendChild(tabs);
+            browser.document.body.appendChild(tabs);
         });
     });
