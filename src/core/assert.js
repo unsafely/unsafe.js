@@ -8,8 +8,8 @@
         };
 
         return {
-            eq: function (left, right) { return assertTrueOrError(left === right); },
-            isTrue: function (it) { return assertTrueOrError(it) }
+            eq: function (left, right) { return assertTrueOrError(left === right, left + " should equal to " + right); },
+            isTrue: function (it) { return assertTrueOrError(it, it + " should be true") }
         };
     });
 }(this.unsafe));
