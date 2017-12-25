@@ -22,7 +22,7 @@
             var setter = property && property.set;
 
             Object.defineProperty(obj, key, {
-                enumerable: property.enumerable,
+                enumerable: true,
                 configurable: true,
                 get: function () {
                     var result = getter ? getter.apply(obj) : val;
@@ -49,6 +49,9 @@
         }
 
         var observable = function (obj) {
+            if (obj && obj.__observable) {
+                return obj;
+            }
             Object.defineProperty(obj, "__observable", {
                 enumerable: false,
                 configurable: false,
@@ -73,6 +76,9 @@
             }
             if (!obj.__watchers[key]) {
                 obj.__watchers[key] = [];
+            }
+            if (!obj.hasOwnProperty(key)) {
+                defineObservable(obj, key);
             }
             obj.__watchers[key].push(watcher);
             return obj;
