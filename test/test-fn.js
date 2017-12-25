@@ -26,4 +26,23 @@ function (test, assert, $) {
         assert.eq($.delegate(duck, "unknown")("duck"), "duck");
     });
 
+    test("should watch a object", function () {
+        var a = {
+            x: 1
+        };
+
+        var executed = false;
+
+        $.watch(a, "x", function (x) {
+            assert.eq(x, 2);
+            executed = true;
+        });
+
+        a.x = 2;
+
+        setTimeout(function () {
+            assert.isTrue(executed);
+        }, 10);
+
+    });
 });
