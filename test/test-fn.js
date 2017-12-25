@@ -22,4 +22,8 @@ function (test, assert, $) {
         assert.eq($.delegate(duck, "feed")(), "duck get fed");  
     });
 
+    test("should return id when delegate unknown method", function () {
+        assert.eq($.delegate(duck, "unknown")("duck"), "duck");
+    });
+
 });
